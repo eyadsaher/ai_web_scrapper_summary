@@ -4,7 +4,6 @@ from IPython.display import Markdown, display
 
 OLLAMA_BASE_URL = "http://localhost:11434/v1"
 ollama = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
-model = "deepseek-r1:1.5b"  # you can change this to any model you like that you have installed
 
 
 system_prompt = """
@@ -27,7 +26,7 @@ def messages_for(website):
     ]
 
 
-def summarize(url, model=model):
+def summarize(url, model):
     website = fetch_website_contents(url)
     response = ollama.chat.completions.create(
         model=model, messages=messages_for(website)
@@ -35,6 +34,6 @@ def summarize(url, model=model):
     return response.choices[0].message.content
 
 
-def display_summary(url, model=model):
+def display_summary(url, model):
     summary = summarize(url, model)
     display(Markdown(summary))
