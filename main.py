@@ -10,7 +10,7 @@ def main():
 
     summary = summarize(
         url, model="deepseek-r1:1.5b"
-    )  # change this to any model of your choice, make sure you installed it locally
+    )  # change this to any model of your choice, make sure you installed it locally via ollama
     print(summary)
 
 
